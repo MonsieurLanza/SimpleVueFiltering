@@ -44,12 +44,10 @@ They said :
   ]
 }
 ```
-
-
-
 Data is in src/data.js
 Feel free to play with it.
 
+See it live here : http://filterzik.lanza.fr/
 
 ## Build Setup
 
