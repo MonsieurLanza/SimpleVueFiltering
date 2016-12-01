@@ -54,6 +54,8 @@ See it live here : http://filterzik.lanza.fr/
 
 ## Build Setup
 
+You will need npm > 3.0.0
+
 ``` bash
 # install dependencies
 npm install
