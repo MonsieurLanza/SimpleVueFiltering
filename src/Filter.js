@@ -1,7 +1,11 @@
 export default class Filter {
   constructor (data) {
-    // TODO: check data integriy.
-    this.artists = data.results
+    if (this.checkData(data)) {
+      this.artists = data.results
+    } else {
+      console.log('Unrecognized JSON format')
+      this.artists = []
+    }
   }
 
   byStyle (style) {
@@ -45,5 +49,21 @@ export default class Filter {
     }
     accu.push(current)
     return accu
+  }
+
+  checkData (data) {
+    let ok = false
+    if (data.results instanceof Array) {
+      for (let item of data.results) {
+        if (item.style instanceof Array) {
+          if (item.name) {
+            if (item.id) {
+              ok = true
+            }
+          }
+        }
+      }
+    }
+    return ok
   }
 }
