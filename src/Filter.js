@@ -8,23 +8,25 @@ export default class Filter {
     }
   }
 
-  byStyle (style) {
+  byStyle (style, input) {
     let searchStyle = style.toLowerCase()
     let results = []
-    for (let artist of this.artists) {
+    let array = input || this.artists
+    for (let artist of array) {
       for (let artistStyle of artist.style) {
         if (artistStyle.toLowerCase() === searchStyle) {
           results.push(artist)
+          continue
         }
       }
     }
-    return results.reduce(this.reducer, [])
+    return results
   }
 
-  byStyles (styles) {
+  byStyles (styles, input) {
     let results = []
     for (let style of styles) {
-      results = results.concat(this.byStyle(style))
+      results = results.concat(this.byStyle(style, input))
     }
     return results.reduce(this.reducer, [])
   }
@@ -39,6 +41,22 @@ export default class Filter {
       }
     }
     return results.sort()
+  }
+
+  byText (query, input) {
+    if (typeof query !== 'string') {
+      return input || this.artists
+    }
+
+    let results = []
+    let array = input || this.artists
+
+    for (let artist of array) {
+      if (artist.name.toLowerCase().includes(query.toLowerCase())) {
+        results.push(artist)
+      }
+    }
+    return results.reduce(this.reducer, [])
   }
 
   reducer (accu, current) {

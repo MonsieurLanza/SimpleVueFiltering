@@ -1,6 +1,7 @@
 # filterzik
 
-> filter Gandi's tiny winy JSON using Vue.js
+Filter Gandi's tiny winy JSON using Vue.js.
+
 They said :
 "Create a quick and dirty but robust small app in the technology of your choice that allow user to filter the following json: "
 ```
@@ -44,9 +45,7 @@ They said :
   ]
 }
 ```
-
-
-
+This is my take on it.
 Data is in src/data.js
 Feel free to play with it.
 

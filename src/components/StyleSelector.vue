@@ -22,11 +22,17 @@ export default {
 
 <style>
 #style-selector {
-  float:left;
+  margin: 1rem;
+  padding: 0;
   text-align: left;
+  margin-right: 1rem;
+  text-align: center;
 }
 
 #style-selector li {
+  display: inline;
   list-style-type: none;
+  padding: 0;
+  margin: 0 1rem;
 }
 </style>
