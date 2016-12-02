@@ -8,27 +8,13 @@ export default class Filter {
     }
   }
 
-  byStyle (style, input) {
-    let searchStyle = style.toLowerCase()
-    let results = []
-    let array = input || this.artists
-    for (let artist of array) {
-      for (let artistStyle of artist.style) {
-        if (artistStyle.toLowerCase() === searchStyle) {
-          results.push(artist)
-          continue
-        }
-      }
-    }
-    return results
-  }
-
   byStyles (styles, input) {
-    let results = []
-    for (let style of styles) {
-      results = results.concat(this.byStyle(style, input))
-    }
-    return results.reduce(this.reducer, [])
+    const lowerCaseStyles = styles.map(style => style.toLowerCase())
+    return this.artists.filter(
+      artist => artist.style.some(
+        artistStyle => lowerCaseStyles.indexOf(artistStyle.toLowerCase()) !== -1
+      )
+    )
   }
 
   get styles () {
