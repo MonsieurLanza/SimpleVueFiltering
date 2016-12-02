@@ -16,7 +16,7 @@ export default class Filter {
       for (let artistStyle of artist.style) {
         if (artistStyle.toLowerCase() === searchStyle) {
           results.push(artist)
-          continue
+          break
         }
       }
     }
